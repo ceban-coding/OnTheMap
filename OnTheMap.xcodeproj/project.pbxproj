@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		D67845C2263B27CA00EFCB1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67845C1263B27CA00EFCB1A /* AppDelegate.swift */; };
 		D67845C4263B27CA00EFCB1A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67845C3263B27CA00EFCB1A /* SceneDelegate.swift */; };
-		D67845C6263B27CA00EFCB1A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67845C5263B27CA00EFCB1A /* ViewController.swift */; };
+		D67845C6263B27CA00EFCB1A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67845C5263B27CA00EFCB1A /* LoginViewController.swift */; };
 		D67845C9263B27CA00EFCB1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67845C7263B27CA00EFCB1A /* Main.storyboard */; };
 		D67845CB263B27CB00EFCB1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D67845CA263B27CB00EFCB1A /* Assets.xcassets */; };
 		D67845CE263B27CB00EFCB1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67845CC263B27CB00EFCB1A /* LaunchScreen.storyboard */; };
+		D6D65AF0263C6929007E8C22 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D65AEF263C6929007E8C22 /* MapViewController.swift */; };
+		D6D65AF2263C6938007E8C22 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D65AF1263C6938007E8C22 /* TableViewController.swift */; };
+		D6D65AF7263C86CE007E8C22 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D65AF6263C86CE007E8C22 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D67845BE263B27CA00EFCB1A /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D67845C1263B27CA00EFCB1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D67845C3263B27CA00EFCB1A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D67845C5263B27CA00EFCB1A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D67845C5263B27CA00EFCB1A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D67845C8263B27CA00EFCB1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D67845CA263B27CB00EFCB1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D67845CD263B27CB00EFCB1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D67845CF263B27CB00EFCB1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6D65AEF263C6929007E8C22 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D6D65AF1263C6938007E8C22 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		D6D65AF6263C86CE007E8C22 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +64,40 @@
 			children = (
 				D67845C1263B27CA00EFCB1A /* AppDelegate.swift */,
 				D67845C3263B27CA00EFCB1A /* SceneDelegate.swift */,
-				D67845C5263B27CA00EFCB1A /* ViewController.swift */,
-				D67845C7263B27CA00EFCB1A /* Main.storyboard */,
-				D67845CA263B27CB00EFCB1A /* Assets.xcassets */,
-				D67845CC263B27CB00EFCB1A /* LaunchScreen.storyboard */,
-				D67845CF263B27CB00EFCB1A /* Info.plist */,
+				D6D65AF3263C7BB8007E8C22 /* View */,
+				D6D65AEE263C68EE007E8C22 /* Controllers */,
+				D6D65AED263C68D9007E8C22 /* Resources */,
 			);
 			path = OnTheMap;
+			sourceTree = "<group>";
+		};
+		D6D65AED263C68D9007E8C22 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D67845CF263B27CB00EFCB1A /* Info.plist */,
+				D67845CC263B27CB00EFCB1A /* LaunchScreen.storyboard */,
+				D67845CA263B27CB00EFCB1A /* Assets.xcassets */,
+				D67845C7263B27CA00EFCB1A /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D6D65AEE263C68EE007E8C22 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D67845C5263B27CA00EFCB1A /* LoginViewController.swift */,
+				D6D65AEF263C6929007E8C22 /* MapViewController.swift */,
+				D6D65AF1263C6938007E8C22 /* TableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D6D65AF3263C7BB8007E8C22 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D6D65AF6263C86CE007E8C22 /* TableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +170,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D67845C6263B27CA00EFCB1A /* ViewController.swift in Sources */,
+				D6D65AF2263C6938007E8C22 /* TableViewController.swift in Sources */,
+				D67845C6263B27CA00EFCB1A /* LoginViewController.swift in Sources */,
 				D67845C2263B27CA00EFCB1A /* AppDelegate.swift in Sources */,
+				D6D65AF7263C86CE007E8C22 /* TableViewCell.swift in Sources */,
 				D67845C4263B27CA00EFCB1A /* SceneDelegate.swift in Sources */,
+				D6D65AF0263C6929007E8C22 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +324,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJG2A7QTCS;
-				INFOPLIST_FILE = OnTheMap/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/OnTheMap/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +343,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SJG2A7QTCS;
-				INFOPLIST_FILE = OnTheMap/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/OnTheMap/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
