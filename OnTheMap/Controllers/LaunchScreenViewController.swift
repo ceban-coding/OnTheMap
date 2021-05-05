@@ -13,10 +13,9 @@ class LaunchScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         activityIndicator.hidesWhenStopped = true
+        
     }
-    
 
     
     @IBAction func getStartedButton(_ sender: Any) {

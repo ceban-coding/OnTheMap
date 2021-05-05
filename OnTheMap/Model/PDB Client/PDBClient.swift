@@ -23,6 +23,7 @@ class PDBClient {
             switch self {
             case .getStudentLocation:
                 return Endpoints.baseUrl + "?" + Endpoints.queryLimit + "&" + Endpoints.queryOrderUpdateTime
+                
             }
         }
         
@@ -31,30 +32,15 @@ class PDBClient {
         }
     }
     
-    //EROORS
-    enum Errors {
-        
-        case networkFailed
-        case unableToDecode
-        case unableToEncode
-        
-        var nsError: NSError {
-            switch self {
-            case .networkFailed : return NSError(domain: "Network Error", code: 1, userInfo: [ NSLocalizedDescriptionKey: "Failed to communicate with Locations server. Check your network connection."])
-            case .unableToDecode : return NSError(domain: "Error", code: 1, userInfo: [ NSLocalizedDescriptionKey: "Unable to update locations. Please try again later"])
-            case .unableToEncode : return NSError(domain: "Error", code: 1, userInfo: [ NSLocalizedDescriptionKey: "Unable to generate your pin. Please try again"])
-            }
-        }
-    }
 
     //MARK: - get request
     
-    class func getStudentLocation(completion: @escaping ([StudentLocation]?, Error?) -> Void) {
-        let task = URLSession.shared.dataTask(with: Endpoints.getStudentLocation.url) { data, response, error in
+    class func taskForGetRequest(completion: @escaping ([StudentLocation]?, Error?) -> Void) {
+        let session = URLSession.shared
+        let task = session.dataTask(with: Endpoints.getStudentLocation.url) { data, response, error in
             guard let data = data else {
-                let networkError = Errors.networkFailed.nsError
                 DispatchQueue.main.async {
-                    completion(nil, networkError)
+                    completion(nil, error)
                 }
                 return
             }
@@ -67,9 +53,8 @@ class PDBClient {
                     completion(studentLocation, nil)
                 }
             } catch {
-                let decodeError = Errors.unableToDecode.nsError
                 DispatchQueue.main.async {
-                    completion(nil, decodeError)
+                    completion(nil, error)
                     }
                 }
             }
@@ -80,21 +65,36 @@ class PDBClient {
 
 //MARK: - POST a student
 
-   //
-   //class func postStudentLocation(completion: @escaping([StudentLocation]?, Error?) -> Void) {
-        //var request = URLRequest(url: Endpoints.getStudentLocations.url)
-       // let task = URLSession.shared.dataTask(with: Endpoints.getStudentLocation.url)
-       // request.httpMethod = "POST"
-        //request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        //let session = URLSession.shared
-        //let task = session.dataTask(with: request) { data, response, error in
-          //if error != nil { // Handle error…
-              //return
-         // }
-        //  print(String(data: data!, encoding: .utf8)!)
-       // }
-       // task.resume()
-   // }
-
-}
+    class func postStudentLocation(studentLocation: StudentLocation, completion: @escaping (Error?) -> Void) {
+        var request = URLRequest(url: Endpoints.getStudentLocation.url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = studentLocation.data(using: .utf8)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(error)
+                }
+                return
+            }
+            let encoder = JSONEncoder()
+            do {
+                let studentLocationJSON = try encoder.encode(studentLocation)
+                DispatchQueue.main.async {
+                    completion(s, nil)
+                }
+            } catch {
+                do {
+                    let errorResponse = try decoder.decode(TMDBResponse.self, from: data) as Error
+                    DispatchQueue.main.async {
+                        completion(nil, errorResponse)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
+                }
+            }
+        }
+        task.resume()
+    }

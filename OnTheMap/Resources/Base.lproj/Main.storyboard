@@ -10,24 +10,24 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Launch Screen View Controller-->
+        <!--LaunchView-->
         <scene sceneID="WNm-sM-P0k">
             <objects>
-                <viewController id="cOZ-Em-c6s" customClass="LaunchScreenViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="LaunchView" id="cOZ-Em-c6s" customClass="LaunchScreenViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wap-HC-LZA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Untitled design (2)" translatesAutoresizingMaskIntoConstraints="NO" id="xKO-0n-J3t">
-                                <rect key="frame" x="107" y="353" width="200" height="200"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Untitled design (2)-2" translatesAutoresizingMaskIntoConstraints="NO" id="xKO-0n-J3t">
+                                <rect key="frame" x="107" y="378" width="200" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="Amv-Pg-SeI"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="Amv-Pg-SeI"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="eMY-0o-thO"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On The Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ru-nh-e4b">
-                                <rect key="frame" x="88" y="309" width="238.5" height="44"/>
-                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="36"/>
+                                <rect key="frame" x="104.5" y="322" width="205" height="56"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="36"/>
                                 <color key="textColor" red="0.21134883169999999" green="1" blue="0.67031192780000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -44,7 +44,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="RLB-nQ-6uG">
-                                <rect key="frame" x="197" y="553" width="20" height="50"/>
+                                <rect key="frame" x="197" y="528" width="20" height="75"/>
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
@@ -71,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="-942.02898550724649" y="87.723214285714278"/>
         </scene>
-        <!--Login View Controller-->
+        <!--LoginView-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="LoginView" id="BYZ-38-t0r" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -256,7 +256,7 @@
                     <navigationItem key="navigationItem" title="On The Map" id="7lc-4Y-Ohx">
                         <barButtonItem key="leftBarButtonItem" title="pin" image="pin.fill" catalog="system" id="gEK-nL-Gzb">
                             <connections>
-                                <segue destination="88R-Yt-E2j" kind="presentation" modalPresentationStyle="fullScreen" id="YXE-bW-Zcd"/>
+                                <segue destination="88R-Yt-E2j" kind="presentation" identifier="addPin" modalPresentationStyle="fullScreen" id="YXE-bW-Zcd"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="back" image="arrowshape.turn.up.backward.fill" catalog="system" id="pqd-kL-5jg"/>
@@ -296,7 +296,7 @@
                     <navigationItem key="navigationItem" title="On The Map" id="9RC-nv-nug">
                         <barButtonItem key="leftBarButtonItem" title="pin" image="pin.fill" catalog="system" id="vJE-VY-ymM">
                             <connections>
-                                <segue destination="88R-Yt-E2j" kind="presentation" modalPresentationStyle="fullScreen" id="A3y-wS-6dd"/>
+                                <segue destination="88R-Yt-E2j" kind="presentation" identifier="addPin" modalPresentationStyle="fullScreen" id="A3y-wS-6dd"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="back" image="arrowshape.turn.up.backward.fill" catalog="system" id="fPs-vS-KOp"/>
@@ -317,14 +317,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHZ-Cb-SiU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHZ-Cb-SiU">
                                 <rect key="frame" x="123.5" y="197" width="167" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="j5i-QT-8Mf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="studying" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jj2-wG-LfT">
                                 <rect key="frame" x="157" y="227" width="100.5" height="30"/>
@@ -333,15 +332,15 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
+                                <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="today?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEs-Pl-dEg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="today?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEs-Pl-dEg">
                                 <rect key="frame" x="167.5" y="257" width="79.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Mrh-6M-P63"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="oTT-fk-3R3">
@@ -376,7 +375,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="findOnTheMap:" destination="88R-Yt-E2j" eventType="touchUpInside" id="LQk-y2-bBI"/>
-                                            <segue destination="TR8-1V-YDd" kind="presentation" modalPresentationStyle="fullScreen" id="AJV-KZ-Jxr"/>
+                                            <segue destination="TR8-1V-YDd" kind="presentation" identifier="findOnTheMap" modalPresentationStyle="fullScreen" id="AJV-KZ-Jxr"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -571,6 +570,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Untitled design (2)" width="500" height="408"/>
+        <image name="Untitled design (2)-2" width="250" height="125"/>
         <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="map" catalog="system" width="128" height="110"/>
@@ -580,6 +580,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

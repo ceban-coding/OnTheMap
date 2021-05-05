@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D621F6012643424C00EF75DF /* UdacityResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D621F6002643424C00EF75DF /* UdacityResponseError.swift */; };
 		D67845C2263B27CA00EFCB1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67845C1263B27CA00EFCB1A /* AppDelegate.swift */; };
 		D67845C4263B27CA00EFCB1A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67845C3263B27CA00EFCB1A /* SceneDelegate.swift */; };
 		D67845C6263B27CA00EFCB1A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67845C5263B27CA00EFCB1A /* LoginViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D621F6002643424C00EF75DF /* UdacityResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityResponseError.swift; sourceTree = "<group>"; };
 		D67845BE263B27CA00EFCB1A /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D67845C1263B27CA00EFCB1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D67845C3263B27CA00EFCB1A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		D6F9405A2641EA91005775DD /* Udacity Responses */ = {
 			isa = PBXGroup;
 			children = (
+				D621F6002643424C00EF75DF /* UdacityResponseError.swift */,
 			);
 			path = "Udacity Responses";
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				D6F9405C2641EED3005775DD /* LaunchScreenViewController.swift in Sources */,
 				D6D65AF0263C6929007E8C22 /* MapViewController.swift in Sources */,
 				D6F9404C26409B70005775DD /* UIViewController+Extension.swift in Sources */,
+				D621F6012643424C00EF75DF /* UdacityResponseError.swift in Sources */,
 				D6F940542640BD77005775DD /* PDBClient.swift in Sources */,
 				D6F9404426405184005775DD /* AddPinViewController.swift in Sources */,
 				D6F9404F2640A08C005775DD /* UDBClient.swift in Sources */,
