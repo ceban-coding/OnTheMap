@@ -6,11 +6,11 @@
 //
 
 import UIKit
-import Foundation
 
 class TableViewController: UITableViewController {
 
     @IBOutlet weak var mapTableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,19 +1,19 @@
 //
-//  MapViewController.swift
+//  LocationAndLinkViewController.swift
 //  OnTheMap
 //
-//  Created by Ion Ceban on 4/30/21.
+//  Created by Ion Ceban on 5/3/21.
 //
 
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class LocationAndLinkViewController: UIViewController {
     
     
+    @IBOutlet weak var linkTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +21,6 @@ class MapViewController: UIViewController {
     }
     
 
-    
     /*
     // MARK: - Navigation
 
@@ -32,4 +31,13 @@ class MapViewController: UIViewController {
     }
     */
 
+    @IBAction func cancel(_ sender: Any) {
+        
+    }
+    
+    
+    @IBAction func submit(_ sender: Any) {
+        
+    }
+    
 }

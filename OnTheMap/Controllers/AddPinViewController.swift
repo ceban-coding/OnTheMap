@@ -1,19 +1,16 @@
 //
-//  MapViewController.swift
+//  AddPinViewController.swift
 //  OnTheMap
 //
-//  Created by Ion Ceban on 4/30/21.
+//  Created by Ion Ceban on 5/3/21.
 //
 
 import UIKit
-import MapKit
 
-class MapViewController: UIViewController {
-    
-    
-    @IBOutlet weak var mapView: MKMapView!
-    
+class AddPinViewController: UIViewController {
 
+    @IBOutlet weak var locationTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +18,6 @@ class MapViewController: UIViewController {
     }
     
 
-    
     /*
     // MARK: - Navigation
 
@@ -32,4 +28,12 @@ class MapViewController: UIViewController {
     }
     */
 
+    @IBAction func cancel(_ sender: Any) {
+        
+    }
+    
+    
+    @IBAction func findOnTheMap(_ sender: Any) {
+        
+    }
 }
