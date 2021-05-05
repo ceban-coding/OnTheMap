@@ -69,32 +69,13 @@ class PDBClient {
         var request = URLRequest(url: Endpoints.getStudentLocation.url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = studentLocation.data(using: .utf8)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else {
-                DispatchQueue.main.async {
-                    completion(error)
-                }
-                return
-            }
-            let encoder = JSONEncoder()
-            do {
-                let studentLocationJSON = try encoder.encode(studentLocation)
-                DispatchQueue.main.async {
-                    completion(s, nil)
-                }
-            } catch {
-                do {
-                    let errorResponse = try decoder.decode(TMDBResponse.self, from: data) as Error
-                    DispatchQueue.main.async {
-                        completion(nil, errorResponse)
-                    }
-                } catch {
-                    DispatchQueue.main.async {
-                        completion(nil, error)
-                    }
-                }
-            }
+        request.httpBody = studentLocation.daata( using.utf8)
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+          if error != nil { // Handle error…
+              return
+          }
+          print(String(data: data!, encoding: .utf8)!)
         }
         task.resume()
     }
