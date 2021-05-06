@@ -10,18 +10,32 @@ import UIKit
 class TableViewController: UITableViewController {
 
     @IBOutlet weak var mapTableView: UITableView!
-    
+    @IBOutlet weak var logOutButton: UIBarButtonItem!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
+    @IBOutlet weak var addButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+       
     }
-
+    
+    //MARK: - Action
+    
+    @IBAction func logOut(_ sender: Any) {
+        
+    }
+    
+    
+    @IBAction func refresh(_ sender: Any) {
+        
+    }
+    
+    
+    @IBAction func addPin(_ sender: Any) {
+        
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -12,14 +12,31 @@ class MapViewController: UIViewController {
     
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var logOut: UIBarButtonItem!
+    @IBOutlet weak var refresh: UIBarButtonItem!
+    @IBOutlet weak var addButton: UIBarButtonItem!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
     
-
+    
+    //MARK: - Action
+    
+    
+    @IBAction func logOutAction(_ sender: Any) {
+        
+    }
+    
+    @IBAction func refreshAction(_ sender: Any) {
+        
+    }
+    
+    
+    @IBAction func addPinLocation(_ sender: Any) {
+        
+    }
     //MARK: - Map View
     
     func setupMap() {

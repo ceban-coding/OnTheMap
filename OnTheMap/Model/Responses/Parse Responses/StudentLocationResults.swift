@@ -8,9 +8,9 @@
 import Foundation
 
 struct StudentLoctaionResults: Codable {
-    let studentLocations: [StudentLocation]
+    let studentLocation: [StudentLocation]
     
     enum CodingKeys: String, CodingKey {
-        case studentLocations = "results"
+        case studentLocation = "results"
     }
 }

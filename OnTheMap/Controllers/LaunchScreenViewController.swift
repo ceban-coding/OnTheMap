@@ -11,10 +11,12 @@ class LaunchScreenViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
-        
+        activityIndicator.color = .systemGreen
     }
 
     
@@ -24,5 +26,7 @@ class LaunchScreenViewController: UIViewController {
             self.performSegue(withIdentifier: "loginView", sender: self)
         })
     }
+    
+   
     
 }

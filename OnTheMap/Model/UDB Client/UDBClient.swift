@@ -9,4 +9,7 @@ import Foundation
 
 class UDBClient {
     
+    static var currentLogin: udacityLoginResponse? = nil
+    
+    
 }
