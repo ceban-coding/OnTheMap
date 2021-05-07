@@ -16,7 +16,6 @@ class LaunchScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.color = .systemGreen
     }
 
     

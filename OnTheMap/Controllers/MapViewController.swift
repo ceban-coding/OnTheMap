@@ -26,7 +26,7 @@ class MapViewController: UIViewController {
     
     
     @IBAction func logOutAction(_ sender: Any) {
-        
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func refreshAction(_ sender: Any) {
