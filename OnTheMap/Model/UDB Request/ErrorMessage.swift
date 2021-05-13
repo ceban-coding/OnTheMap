@@ -1,8 +1,8 @@
 //
-//  UdacityResponseError.swift
+//  ErrorMessage.swift
 //  OnTheMap
 //
-//  Created by Ion Ceban on 5/5/21.
+//  Created by Ion Ceban on 5/13/21.
 //
 
 import Foundation

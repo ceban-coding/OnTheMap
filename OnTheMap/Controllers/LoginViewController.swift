@@ -29,7 +29,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        keyboardNotification()
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         self.activityIndicator.isHidden = true
@@ -43,7 +42,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        subscribeToKeyboardNotification()
     }
     
     
@@ -52,7 +51,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func logIn(_ sender: Any) {
         fieldsChecker()
         setLoggingIn(true)
-        UDBCLient.login(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "", completion: handleLoginResponse(loginSuccess:error:))
+        UDBClient.login(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "", completion: handleLoginResponse(loginSuccess:error:))
+       
     }
     
     
@@ -70,9 +70,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     func handleLoginResponse(loginSuccess: Bool, error: Error?) {
-        
         setLoggingIn(false)
-        
         if !loginSuccess {
             DispatchQueue.main.async {
                 let invalidAccess = UIAlertController(title: "Invalid Access", message: "Login credentials are incorrect", preferredStyle: .alert)
@@ -81,9 +79,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }))
                 self.present(invalidAccess, animated: true, completion: nil)
             }
-            
         }
-       
         if loginSuccess {
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "completedLogin", sender: nil)
@@ -111,17 +107,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Login Errors User Alerts
     
     func showLoginFailure(title: String, message: String) {
-        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertVC, animated: true, completion: nil)
-    }
-    
-    func alertUserTo(error: NSError) {
-        let alertController = UIAlertController(title: error.domain, message: error.localizedDescription, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(action)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
+    
+   
     
     func fieldsChecker() {
        if (emailTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)!  {
@@ -141,20 +132,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Function for keyboard
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
+        if !keyboardIsVisible && (emailTextField.isEditing || passwordTextField.isEditing) {
+            view.frame.origin.y -= logInButton.frame.height
+            keyboardIsVisible = true
             }
         }
-    }
+    
 
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
+   @objc func keyboardWillHide(_ notification:Notification) {
+      if keyboardIsVisible {
+          view.frame.origin.y += logInButton.frame.height
+          keyboardIsVisible = false
+       }
     }
     
-    func keyboardNotification() {
+    func subscribeToKeyboardNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
