@@ -22,11 +22,6 @@ OPE URLs
 
 # Images
 
-Login
-![Uploading IMG_4393.PNG…]()
+Loging
 
-![IMG_4390](https://user-images.githubusercontent.com/69313995/118396149-c1fab900-b613-11eb-9183-d57275870c96.PNG)
-
-![IMG_4391](https://user-images.githubusercontent.com/69313995/118396151-c45d1300-b613-11eb-8436-000eff145783.PNG)
-![Uploading IMG_4392.PNG…]()
 
