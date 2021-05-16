@@ -26,12 +26,11 @@ OPE URLs
 
 <img src="Images/IMG_4390.PNG" width="200" height="400">  <img src="Images/IMG_4391.PNG" width="200" height="400">
 
-           TableView
-<img src="Images/IMG_4392.PNG" width="200" height="400"> 
-           AddPinLocationView
-<img src="Images/IMG_4393.PNG" width="200" height="400">
-           LocationView
-<img src="Images/IMG_4394.PNG" width="200" height="400">
+          TableView           AddPinLocationView                                   
+<img src="Images/IMG_4392.PNG" width="200" height="400">  <img src="Images/IMG_4393.PNG" width="200" height="400">
+
+       LocationView
+<img src="Images/IMG_4395.PNG" width="200" height="400">
 
 
 
