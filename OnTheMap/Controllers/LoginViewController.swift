@@ -57,12 +57,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func signUp(_ sender: Any) {
-        UIApplication.shared.open(URL(string: "https://auth.udacity.com/sign-up")!, options: [:], completionHandler: nil)
+        setLoggingIn(true)
+        UDBClient.getLoggedInUsserProfile { (success, error) in
+            if success {
+                DispatchQueue.main.async {
+                    UIApplication.shared.open(URL(string: "https://auth.udacity.com/sign-up")!, options: [:], completionHandler: nil)
+                }
+            }
+        }
+        
     }
     
     
     @IBAction func logInWithFacebook(_ sender: Any) {
-        performSegue(withIdentifier: "completeLogin", sender: nil)
+      
     }
     
     
@@ -85,7 +93,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.performSegue(withIdentifier: "completedLogin", sender: nil)
             }
         } else {
-            showLoginFailure(title: "Login Failed", message: error?.localizedDescription ?? "")
+            showLoginFailure(message:  error?.localizedDescription ?? "")
         }
     }
     
@@ -100,16 +108,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.emailTextField.isEnabled = !loggingIn
             self.passwordTextField.isEnabled = !loggingIn
             self.logInButton.isEnabled = !loggingIn
+            self.signUpButton.isEnabled = !loggingIn
         }
     }
     
     
     //MARK: - Login Errors User Alerts
     
-    func showLoginFailure(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertController, animated: true, completion: nil)
+    func showLoginFailure(message: String) {
+        let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        show(alertVC, sender: nil)
     }
     
    

@@ -14,7 +14,7 @@ class TableViewController: UITableViewController {
     @IBOutlet weak var refreshButton: UIBarButtonItem!
     @IBOutlet weak var addButton: UIBarButtonItem!
     
-    var results = [StudentInformation]()
+    
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     

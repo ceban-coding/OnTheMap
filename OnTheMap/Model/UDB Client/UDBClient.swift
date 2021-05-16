@@ -16,6 +16,8 @@ class UDBClient {
         
         struct Auth {
             static var accountKey = ""
+            static var firstName = ""
+            static var lastName = ""
         }
         
         case login
@@ -153,7 +155,6 @@ class UDBClient {
         return task
     }
     
-    
    
     class func login(email: String, password: String, completion: @escaping (Bool, Error?) -> ()) {
         
@@ -232,7 +233,18 @@ class UDBClient {
         }
     }
     
-    
+    class func getLoggedInUsserProfile(completion: @ escaping (Bool, Error?) -> Void) {
+        let _ = taskForGETRequest(url: Endpoints.getUserData.url, removeFirstCharacters: true, response: UserResponse.self) { response, error in
+            if let response = response {
+                Endpoints.Auth.firstName = response.firstName
+                Endpoints.Auth.lastName = response.lastName
+                completion (true, nil)
+            } else {
+                print("Failed to get user's profile")
+                completion (false, error)
+            }
+        }
+    }
     
 }
 
