@@ -125,21 +125,12 @@ class LocationAndLinkViewController: UIViewController {
     func handlePostStudentResponse(success: Bool, error: Error?) {
         
         if success {
-            let mainTabController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController")
-            self.present(mainTabController, animated: true, completion: nil)
-            
-            
-            
+            UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController")
+            self.dismiss(animated: true , completion: nil)
         } else {
             showFailure(title: "Unable to Save Information", message: error?.localizedDescription ?? "")
         }
         
-    }
-    
-    func showFailure(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertController, animated: true, completion: nil)
     }
     
     

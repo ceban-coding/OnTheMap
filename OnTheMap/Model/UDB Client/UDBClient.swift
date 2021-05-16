@@ -11,6 +11,9 @@ import MapKit
 
 class UDBClient {
     
+    
+    //MARK: - Endpoints
+    
     enum Endpoints {
         static let baseUrl = "https://onthemap-api.udacity.com/v1"
         
@@ -46,7 +49,7 @@ class UDBClient {
         }
     }
     
-    
+    //MARK: - Get Request
     
     class func taskForGETRequest<ResponseType: Decodable>(url: URL, removeFirstCharacters: Bool, response: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionTask{
         
@@ -83,6 +86,7 @@ class UDBClient {
         
     }
     
+    //Mark: - Post Request
     
     class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, removeFirstCharacters: Bool, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) {
         
@@ -117,6 +121,8 @@ class UDBClient {
         }
         task.resume()
     }
+    
+    //MARK: - Delete Request
     
     class func taskForDELETERequest<ResponseType: Decodable>(url: URL, response: ResponseType.Type, completion: @escaping (Bool, Error?) -> Void) -> URLSessionTask {
         var request = URLRequest(url: url)
@@ -154,7 +160,9 @@ class UDBClient {
         
         return task
     }
+   
     
+    //MARK: - Login Post Request
    
     class func login(email: String, password: String, completion: @escaping (Bool, Error?) -> ()) {
         
@@ -168,7 +176,7 @@ class UDBClient {
         let task = session.dataTask(with: request) { data, response, error in
             if error != nil { // Handle error…
                 print(error?.localizedDescription ?? "")
-                return
+               
             }
 
             guard let data = data else {
@@ -198,6 +206,8 @@ class UDBClient {
         
     }
     
+    //MARK: - Get Student Location Request
+    
     class func getStudentLocation(completion: @escaping ([StudentLocation], Error?) -> Void) {
         
         let _ = taskForGETRequest(url: Endpoints.getStudentLocation.url, removeFirstCharacters: false, response: StudentLocationResults.self) { (response, error) in
@@ -209,11 +219,16 @@ class UDBClient {
         }
     }
     
+    //MARK: - Post STudent Location request
+    
     class func postStudentLocation(firstName: String, lastName: String, mapString: String, mediaURL: String, latitude: Float, longitude: Float, completion: @escaping (Bool, Error?) -> Void) {
         taskForPOSTRequest(url: Endpoints.postStudentLocation.url, removeFirstCharacters: false, responseType: PostLocationResponse.self, body: PostLocationRequest(uniqueKey: Endpoints.Auth.accountKey, firstName: firstName, lastName: lastName, mapString: mapString, mediaURL: mediaURL, latitude: latitude, longitude: longitude)) { (_, error) in
                 completion(error == nil, error)
             }
         }
+    
+    
+    //MARK: - Logout Request
     
     class func logout(completion: @escaping (Bool, Error?) -> Void) {
         let _ = taskForDELETERequest(url: Endpoints.logOut.url, response: LogoutResponse.self) { (response, error) in
@@ -221,7 +236,7 @@ class UDBClient {
         }
     }
     
-    
+    //MARK: - User Data Get Request
     
     class func getPublicUserData(completion: @escaping (String?, String?, Error?) -> Void) {
         let _ = taskForGETRequest(url: Endpoints.getUserData.url, removeFirstCharacters: true, response: UserResponse.self) { (response, error) in
@@ -232,6 +247,8 @@ class UDBClient {
             }
         }
     }
+    
+    //MARK: - LogOut get request
     
     class func getLoggedInUsserProfile(completion: @ escaping (Bool, Error?) -> Void) {
         let _ = taskForGETRequest(url: Endpoints.getUserData.url, removeFirstCharacters: true, response: UserResponse.self) { response, error in
