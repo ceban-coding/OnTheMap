@@ -50,7 +50,8 @@ class UDBClient {
         }
     }
     
-    //MARK: Errors
+    //MARK: - Errors
+    
     enum Errors {
         
         case networkFailed
