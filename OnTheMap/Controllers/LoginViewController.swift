@@ -7,9 +7,10 @@
 
 import UIKit
 import Foundation
+import Reachability
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-
+    
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -19,12 +20,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var keyboardIsVisible = false
-    
+    let reachability = try! Reachability()
+   
     // MARK: - Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
         emailTextField.text = ""
         passwordTextField.text = ""
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+            do{
+              try reachability.startNotifier()
+            }catch{
+              print("could not start reachability notifier")
+            }
     }
     
     override func viewDidLoad() {
@@ -36,6 +44,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
+        reachability.stopNotifier()
+        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -71,6 +81,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
       
     }
     
+    
+
     
     //MARK: - function for request
     
@@ -162,6 +174,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    @objc func reachabilityChanged(note: Notification) {
+
+      let reachability = note.object as! Reachability
+
+      switch reachability.connection {
+      case .wifi:
+          print("Reachable via WiFi")
+      case .cellular:
+          print("Reachable via Cellular")
+      case .unavailable:
+        print("Network not reachable")
+      case .none:
+        print("Not detected data")
+      }
+    }
+    
+
 }
 
 

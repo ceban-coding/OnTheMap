@@ -8,13 +8,12 @@
 import Foundation
 
 struct ErrorResponse: Codable {
+    let statusCode: Int
+    let statusMessage: String
     
-    let status: Int
-    let error: String
-}
-
-extension ErrorResponse: LocalizedError {
-    var errorDescription: String? {
-        return error
-    }
+    enum Codingkeys: String, CodingKey {
+        case statusCode = "status_code"
+        case statusMessage = "status_message"
+        
+    }    
 }

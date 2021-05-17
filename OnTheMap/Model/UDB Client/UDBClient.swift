@@ -8,9 +8,10 @@
 import Foundation
 import UIKit
 import MapKit
+import Reachability
 
 class UDBClient {
-    
+ 
     
     //MARK: - Endpoints
     
@@ -46,6 +47,20 @@ class UDBClient {
         
         var url: URL {
             URL(string: self.stringValue)!
+        }
+    }
+    
+    //MARK: Errors
+    enum Errors {
+        
+        case networkFailed
+        case incorrectLoginDetails
+        
+        var nsError: NSError {
+            switch self {
+            case .networkFailed : return NSError(domain: "Network Error", code: 1, userInfo: [ NSLocalizedDescriptionKey: "Failed to communicate with Udacity. Check your network connection."])
+            case .incorrectLoginDetails : return NSError(domain: "Login Failed", code: 1, userInfo: [ NSLocalizedDescriptionKey: "Incorrect username and/or password. Please try again."])
+            }
         }
     }
     
@@ -174,9 +189,12 @@ class UDBClient {
         print(request)
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
-            if error != nil { // Handle error…
+            if  error != nil {
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
                 print(error?.localizedDescription ?? "")
-               
+                return
             }
 
             guard let data = data else {
@@ -185,20 +203,25 @@ class UDBClient {
 
             let range = (5..<data.count)
             let newData = data.subdata(in: range) /* subset response data! */
-            print(String(data: newData, encoding: .utf8)!)
-
+            
+            let decoder = JSONDecoder()
             do {
-                let decoder = JSONDecoder()
+        
                 let decoded = try decoder.decode(LoginResponse.self, from: newData)
                 let accountId = decoded.account.key
+                DispatchQueue.main.async {
+                    self.Endpoints.Auth.accountKey = accountId!
+                    print("Account Key is \(String(describing: accountId))")
+                    completion(true, nil)
+                }
+                
 
-                self.Endpoints.Auth.accountKey = accountId!
-                print("Account Key is \(String(describing: accountId))")
-                completion(true, nil)
-
-            } catch let error {
-                print(error.localizedDescription)
-                completion(false, nil)
+            } catch  {
+                let incorrectLoginError = Errors.incorrectLoginDetails.nsError
+                DispatchQueue.main.async {
+                    completion(false, incorrectLoginError)
+                }
+                
             }
         }
         task.resume()
@@ -219,7 +242,7 @@ class UDBClient {
         }
     }
     
-    //MARK: - Post STudent Location request
+    //MARK: - Post request
     
     class func postStudentLocation(firstName: String, lastName: String, mapString: String, mediaURL: String, latitude: Float, longitude: Float, completion: @escaping (Bool, Error?) -> Void) {
         taskForPOSTRequest(url: Endpoints.postStudentLocation.url, removeFirstCharacters: false, responseType: PostLocationResponse.self, body: PostLocationRequest(uniqueKey: Endpoints.Auth.accountKey, firstName: firstName, lastName: lastName, mapString: mapString, mediaURL: mediaURL, latitude: latitude, longitude: longitude)) { (_, error) in
@@ -228,7 +251,7 @@ class UDBClient {
         }
     
     
-    //MARK: - Logout Request
+    //MARK: -Logout Request
     
     class func logout(completion: @escaping (Bool, Error?) -> Void) {
         let _ = taskForDELETERequest(url: Endpoints.logOut.url, response: LogoutResponse.self) { (response, error) in
@@ -263,6 +286,8 @@ class UDBClient {
         }
     }
     
+    
+   
 }
 
 
