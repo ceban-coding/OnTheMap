@@ -10,8 +10,7 @@ import UIKit
 import MapKit
 import Reachability
 
-class UDBClient {
- 
+class UDBClient { 
     
     //MARK: - Endpoints
     
