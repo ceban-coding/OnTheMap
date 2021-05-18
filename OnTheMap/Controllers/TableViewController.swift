@@ -16,7 +16,6 @@ class TableViewController: UITableViewController {
     
     
     
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -53,14 +52,14 @@ class TableViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return appDelegate.studentLocations.count
+        return studentLocationSaved.studentLocation.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell") as! TableViewCell
-        cell.nameLabel?.text = appDelegate.studentLocations[(indexPath as NSIndexPath).row].firstName + " " + appDelegate.studentLocations[(indexPath as NSIndexPath).row].lastName
-        cell.locationLabel?.text = appDelegate.studentLocations[(indexPath as NSIndexPath).row].mediaURL
+        cell.nameLabel?.text = studentLocationSaved.studentLocation[(indexPath as NSIndexPath).row].firstName + " " + studentLocationSaved.studentLocation[(indexPath as NSIndexPath).row].lastName
+        cell.locationLabel?.text = studentLocationSaved.studentLocation[(indexPath as NSIndexPath).row].mediaURL
         return cell
     }
     
@@ -78,7 +77,7 @@ class TableViewController: UITableViewController {
         refreshButton.isEnabled = true
         
         if error == nil {
-            appDelegate.studentLocations = locations
+            studentLocationSaved.studentLocation = locations
             self.tableView.reloadData()
         } else {
             showFailure(title: "No location found", message: error?.localizedDescription ?? "")

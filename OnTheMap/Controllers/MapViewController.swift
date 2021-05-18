@@ -113,7 +113,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             if self.mapView.annotations.count > 0 {
                 self.mapView.removeAnnotations(self.mapView.annotations)
             }
-            appDelegate.studentLocations = locations
+            studentLocationSaved.studentLocation = locations
             showMapAnnotations(locations)
         } else {
             showFailure(title: "Get Student Locations Failed", message: error?.localizedDescription ?? "")

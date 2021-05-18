@@ -78,7 +78,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func logInWithFacebook(_ sender: Any) {
-      
+        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -110,11 +110,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func setLoggingIn(_ loggingIn: Bool) {
         DispatchQueue.main.async {
-            if loggingIn {
-                self.activityIndicator.startAnimating()
-            } else {
-                self.activityIndicator.stopAnimating()
-            }
+            loggingIn ? self.activityIndicator.startAnimating() : self.activityIndicator.stopAnimating()
             self.emailTextField.isEnabled = !loggingIn
             self.passwordTextField.isEnabled = !loggingIn
             self.logInButton.isEnabled = !loggingIn
@@ -174,6 +170,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    
+    //MARK: - Reachability method
+    
     @objc func reachabilityChanged(note: Notification) {
 
       let reachability = note.object as! Reachability
@@ -189,6 +188,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         print("Not detected data")
       }
     }
+    
     
 
 }

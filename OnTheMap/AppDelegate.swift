@@ -10,7 +10,6 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-var studentLocations = [StudentLocation]()
 
 var window: UIWindow?
 
